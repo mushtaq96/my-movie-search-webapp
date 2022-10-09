@@ -36,9 +36,9 @@ small {
 }
 
 .label {
-  font-size: 1.2rem;
-  margin-bottom: 0.2rem;
+  font-size: 1.7rem;
   text-transform: uppercase;
+  margin:auto;
 }
 
 .input {
@@ -47,14 +47,15 @@ small {
   line-height: 2.6rem;
   border-radius: 20px;
   border: 1px solid #ddd;
-  margin-bottom: 1rem;
+  margin: 5px 15px;
 }
 
 .button {
+  margin: 0 10px ;
   background-color: darkcyan;
   border: 1px solid;
   border-radius: 20px;
-  font-size: 1.4rem;
+  font-size: 1.7rem;
   cursor: pointer;
   transition: background-color 250ms;
   color: azure;
