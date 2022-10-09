@@ -6,22 +6,27 @@ function SearchMovies() {
   const [query, setQuery] = useState("");
   //movies state and update
   const [movies, setMovies] = useState([]);
+  const [errorText, setErrorText] = useState(null);
 
   const SearchMovies = async (e) => {
     e.preventDefault();
     console.log("submitting");
 
     const myApiKey = "624dac08ec2eb76d49a69bc057e6f9e1";
-
-    const url = `https://api.themoviedb.org/3/search/movie?api_key=${myApiKey}&language=en-US&query=${query}&page=1&include_adult=false`;
-
-    try {
-      const res = await fetch(url);
-      const data = await res.json();
-      console.log(data.results);
-      setMovies(data.results);
-    } catch (err) {
-      console.error(err);
+    if(query.trim().length !== 0){
+      const url = `https://api.themoviedb.org/3/search/movie?api_key=${myApiKey}&language=en-US&query=${query}&page=1&include_adult=false`;
+    
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+        console.log(data.results);
+        setMovies(data.results);
+        if((movies !== undefined && movies !== null) && Object.keys(movies).length == 0){
+          setErrorText("Invalid Input, please try again")
+        }
+      } catch (err) {
+        console.error(err);
+      }
     }
   };
   return (
@@ -49,6 +54,8 @@ function SearchMovies() {
             <MovieCard movie={movie} key={movie.id} />
           ))}
       </div>
+        {errorText !== null ? <p>{errorText}</p>: null}
+
     </>
   );
 }
