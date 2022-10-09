@@ -21,7 +21,7 @@ function SearchMovies() {
         const data = await res.json();
         console.log(data.results);
         setMovies(data.results);
-        if((movies !== undefined && movies !== null) && Object.keys(movies).length == 0){
+        if((movies !== undefined && movies !== null) && Object.keys(movies).length === 0){
           setErrorText("Invalid Input, please try again")
         }
       } catch (err) {
